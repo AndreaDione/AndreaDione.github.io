@@ -6,21 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hello World | Hexo</title>
+  <title>面向对象的JavaScript | Lee Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="前言本文仅仅是我学习JavaScript过程中的主观理解，当然我也觉得这篇文章比较适合JavaScript入门的同学，我尽量用简单的语言描述，从面向对象的角度去理解JavaScript。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2020/05/02/hello-world/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:title" content="面向对象的JavaScript">
+<meta property="og:url" content="http://yoursite.com/2020/05/02/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84JavaScript/index.html">
+<meta property="og:site_name" content="Lee Blog">
+<meta property="og:description" content="前言本文仅仅是我学习JavaScript过程中的主观理解，当然我也觉得这篇文章比较适合JavaScript入门的同学，我尽量用简单的语言描述，从面向对象的角度去理解JavaScript。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-05-02T09:49:37.573Z">
-<meta property="article:modified_time" content="2020-05-02T09:49:37.573Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:published_time" content="2020-05-02T15:46:28.000Z">
+<meta property="article:modified_time" content="2020-05-03T04:02:35.754Z">
+<meta property="article:author" content="Andrea Dione">
+<meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Lee Blog" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -47,10 +48,10 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="" class="js-avatar">
+			<img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=4121916532,1157977071&amp;fm=26&amp;gp=0.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">John Doe</a></h1>
+		  <h1 class="header-author"><a href="/">Andrea Dione</a></h1>
 		</hgroup>
 		
 
@@ -59,7 +60,11 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+				<li><a href="/archives">归档</a></li>
+	        
+				<li><a href="/categories">分类</a></li>
+	        
+				<li><a href="/tags">标签</a></li>
 	        
 			</ul>
 		</nav>
@@ -105,13 +110,17 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="" class="js-avatar">
+				<img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=4121916532,1157977071&amp;fm=26&amp;gp=0.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">John Doe</h1>
+			  <h1 class="header-author js-header-author">Andrea Dione</h1>
 			</hgroup>
 			
 			
+			
+				
+			
+				
 			
 				
 			
@@ -134,12 +143,16 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 25%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 25%"><a href="/archives">归档</a></li>
+		        
+					<li style="width: 25%"><a href="/categories">分类</a></li>
+		        
+					<li style="width: 25%"><a href="/tags">标签</a></li>
 		        
 				</ul>
 			</nav>
@@ -154,39 +167,100 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-面向对象的JavaScript" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      面向对象的JavaScript
     </h1>
   
 
         
-        <a href="/2020/05/02/hello-world/" class="archive-article-date">
-  	<time datetime="2020-05-02T09:49:37.573Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-02</time>
+        <a href="/2020/05/02/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84JavaScript/" class="archive-article-date">
+  	<time datetime="2020-05-02T15:46:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文仅仅是我学习JavaScript过程中的主观理解，当然我也觉得这篇文章比较适合JavaScript入门的同学，我尽量用简单的语言描述，从面向对象的角度去理解JavaScript。</p>
+<a id="more"></a>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="编程语言类型"><a href="#编程语言类型" class="headerlink" title="编程语言类型"></a>编程语言类型</h2><p>如果按照数据类型去分类的话，我们可以把编程语言分成两大类型：<strong>静态类型语言</strong>和<strong>动态类型语言</strong>。</p>
+<table>
+    <tr>
+        <th></th>
+        <th>静态类型语言</th>
+        <th>动态类型语言</th>
+    </tr>
+    <tr>
+        <td>优点</td>
+        <td>在编译时能够发现类型不匹配的错误；编译器可以对程序作出优化，提高程序执行速度</td>
+        <td>代码数量少，程序员更专专注于逻辑表达</td>
+    </tr>
+    <tr>
+        <td>缺点</td>
+        <td>使程序员按照强契约来编写代码，代码量多</td>
+        <td>无法保证变量类型，变量只有在程序运行的时候才确定</td>
+    </tr>
+</table>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>静态类型语言的代表有： C / C++ / Java等。</p>
+<p>动态类型语言的代表有： JavaScript / Python等。</p>
+<h2 id="面向对象特点"><a href="#面向对象特点" class="headerlink" title="面向对象特点"></a>面向对象特点</h2><p>如果你已经有了一定的程序设计基础，那么你可能会知道面向对象思想。面向对象思想有三大特征：<strong>封装</strong>、<strong>继承</strong>和<strong>多态</strong>。接下来我从这三个特征开始讲解面向对象的JavaScript。</p>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>先讲讲继承。JavaScript并没有提供传统面向对象语言中的类式继承，而是通过使用<strong>原型委托</strong>的方式实现对象与对象之间的继承，JavaScript也没有在语言层面中提供对抽象类和接口的支持。</p>
+<blockquote>
+<p>这里我不会详细讲解JavaScript的继承方式，因为要解析的东西非常多，后面我会写一篇文章专门讲解JavaScript的继承实现的过程。</p>
+</blockquote>
+<p><strong>原型委托</strong>这个概念可能比较抽象难懂，我这里换一个简单粗暴的词：克隆！任何一个JavaScript对象都是从另外一个已存在的对象中克隆出来的，然后再加上自己独有的属性变成了一个独特的对象。</p>
+<p>每一个对象实例的<strong>proto</strong>属性都会记录着这个对象的原型对象（被继承者），<strong>我们可以通过直接修改对象实例的<strong>proto</strong>属性从而实现继承</strong>，这是一种方法。<strong>或者我们也可以通过修改构造器的prototype属性</strong>，从而改变构造器的继承对象来实现继承。</p>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><blockquote>
+<p>如果你是一位Java语言的忠实粉丝，那么你可能会非常不习惯JavaScript的这种特性。</p>
+</blockquote>
+<p>先讲个小故事：从前有个国王，他喜欢鸭子的叫声。于是组建一个1000只鸭子组成的合唱团，结果全国只有999只鸭子。最后发现有一只鸡，它叫的声音跟鸭子一模一样，于是这只鸡就是鸭子合唱团的最后一只鸭子了。</p>
+<p>上面的故事告诉我们：国王要的是听到鸭子的叫声，而这个声音的主人到底是什么东西并不重要。</p>
+<p>这也是有名的“鸭子模型”：<strong>如果它走起路来像鸭子，叫起来也像鸭子，那么就认为它是鸭子</strong>。</p>
+<p>鸭子模型指导我们：<strong>只关注对象的行为，而不关注对象的本身</strong>。这是JavaScript非常核心的编程思想。</p>
+<p>下面使用JavaScript表示出鸭子模型故事</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> duck = &#123;</span><br><span class="line">    duckSinging() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'嘎嘎嘎'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> chicken = &#123;</span><br><span class="line">    duckSinging() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'嘎嘎嘎'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> choir = [] <span class="comment">//合唱团</span></span><br><span class="line"><span class="keyword">var</span> joinChoir = <span class="function"><span class="keyword">function</span>(<span class="params">animal</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(animal &amp;&amp; <span class="keyword">typeof</span> animal.duckSinging === <span class="string">'function'</span>) &#123;</span><br><span class="line">        choir.push(animal) <span class="comment">//加入合唱团</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">joinChior(duck)</span><br><span class="line">joinChior(chicken)</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p>我们可以从代码中看出来，只要一个动物有duckSinging的方法，那么它就可以被当成鸭子，加入合唱团。</p>
+<p><strong>利用鸭子类型的思想可以使得动态类型语言不必借助超类型的帮助实现面向接口编程、而不是面向现实编程</strong>。</p>
+<blockquote>
+<p>举个栗子：一个对象如果有push和pop方法，并且能够提供正确的实现方法，那么它就可以被当作一个栈来使用；如果一个对象具有length属性也可以依照下标来存储属性，那么它就可以当成一个数组使用。</p>
+</blockquote>
+<p>回到多态，多态的解释<strong>是同一样的操作在不同对象上会产生不同的解析和不同的执行结果</strong>。</p>
+<p>我们用Java代码实现一个多态的例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">sound</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Duck</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sound</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"嘎嘎嘎"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Chicken</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sound</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"咯咯咯"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="title">animalSound</span><span class="params">(Animal animal)</span> </span>&#123;</span><br><span class="line">    animal.sound();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在静态类型语言中，实现面向接口编程是不容易的。往往是要借助抽象类或者接口类型将对象向上转型。</p>
+<p><strong>方法重载</strong>是多态的实现方式，在静态类型语言当中数据类型检查是对象表现出多态的一个不可避免的话题。</p>
+<blockquote>
+<p>方法重载：同一种方法根据参数列表的不同而有不同的执行。</p>
+</blockquote>
+<p><strong>JavaScript并没有数据类型检查</strong>，它的变量类型在运行周期是可变的。一个JavaScript对象，即可表示Duck类型、也可以表示Chicken类型。所以，JavaScript的多态性是与生俱来的！<strong>由此可见，在JavaScript中，一个对象能否做xx事，取决于它有没有做xx事的方法，而不是它是什么对象类型。</strong></p>
+<p>其实我们仔细观察和理解可以发现：多态的本质是将<strong>不可变的事物</strong>和<strong>可变的事物</strong>分离出来。</p>
+<p>下面再通过一个例子讲解一下JavaScript是如何表现多态的：假如现在要编写一个地图应用，现在有两家可选的地图API提供商供我们接入自己的应用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> googleMap = &#123;</span><br><span class="line">    show() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'渲染谷歌地图'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">renderMap</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    googleMap.show()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>后来因为某种原因，需要加上百度地图，于是代码就可能改成这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> googleMap = &#123;</span><br><span class="line">    type: <span class="string">'google'</span>,</span><br><span class="line">    show() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'渲染谷歌地图'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> baiduMap = &#123;</span><br><span class="line">    type: <span class="string">'baidu'</span>,</span><br><span class="line">    show() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'渲染百度地图'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">renderMap</span>(<span class="params">type</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="string">'google'</span> === type) &#123;</span><br><span class="line">        googleMap.show()</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">'baidu'</span> === type)&#123;</span><br><span class="line">        baiduMap.show()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>万一需求经理又提出了换成高德地图呢？？？<br>按照上面的方法你又要改renderMap（）。随着地图越来越多，你的代码是无穷无尽的if else if else if else……</p>
+<p>理论上来讲renderMap()只是渲染地图的方法，它是不变的。变化的只是地图的对象。所以我们换一种方法实现多态，把变和不变分开。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//我们调整一下renderMap的方法主体</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">renderMap</span>(<span class="params">map</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> map.show === <span class="string">'function'</span>) &#123;</span><br><span class="line">        map.show()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">renderMap(googleMap)</span><br><span class="line">renderMap(baiduMap)</span><br><span class="line"><span class="comment">//假如这个时候增加一个高德地图</span></span><br><span class="line"><span class="comment">//那么你只需要编写一个新的对象，然后具有show方法即可</span></span><br><span class="line"><span class="keyword">var</span> AMap = &#123;</span><br><span class="line">    show() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'渲染高德地图'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">renderMap(AMap)</span><br></pre></td></tr></table></figure>
+<p>我们可以看到，在上面的例子当中，我们就是通过在一个对象上直接添加一个show方法实现了多态。这个过程完全没有向上转型。进而再一次可以看出来，因为没有数据类型检测，JavaScript的多态是与生俱来的；还有JavaScript的一个编程思想是：只关注对象行为，不关注对象本质。</p>
+<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><p>为什么最后讲封装？因为这里涉及到一个概念——闭包。闭包是困扰JavaScript初学者的一个知识点，同时它牵扯到的东西也非常多，因此这里也不会做详细的解释，只是简单理解即可。</p>
+<p>我们还是拿面向对象编程语言代表——Java来比较。</p>
+<p>Java给我们提供了public，private等关键字实现数据访问权限管理。但是JavaScript却没有这些支持，只能通过变量作用域来实现封装。</p>
+<p>我们实现一个简单的Student类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面Java代码中，name被<strong>private</strong>关键字修饰，它不能够直接被外界访问，只能通过setName和getName方法间接访问。</p>
+<p>再来看看用JavaScript写的Student类：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Student = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> __name = name</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        getName() &#123;</span><br><span class="line">            <span class="keyword">return</span> __name</span><br><span class="line">        &#125;,</span><br><span class="line">        setName(name) &#123;</span><br><span class="line">            __name = name</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> student = <span class="keyword">new</span> Student(<span class="string">'Andrea'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(student.getName()) <span class="comment">//Andrea</span></span><br><span class="line"><span class="built_in">console</span>.log(student.__name) <span class="comment">//undefined</span></span><br><span class="line">student.setName(<span class="string">'Dione'</span>) <span class="comment">// __name = Dione</span></span><br></pre></td></tr></table></figure>
+<p>上面就是JavaScript通过闭包的方式实现了数据的封装，现在你或许不理解，怎么封装的，这个没有关系。你只需要知道JavaScript也是可以实现数据封装的即可。</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>写到这里本章就结束了，本章主要从面向对象的角度介绍了JavaScript的语言特性，重点是详细讲了多态的概念。还是那句话，如果你是传统面向对象语言的忠实粉丝，那么你可能一时间接受不了JavaScript这种面向对象的实现方法。但是我们只要多写代码就可以发现JavaScript的乐趣。过一段时间后我会写JavaScript的原型继承、闭包和作用域链等文章，在本文章里面省略讲解的部分都会在接下来的文章中讲解。</p>
 
       
 
@@ -216,6 +290,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -266,7 +351,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/02/hello-world/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/02/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84JavaScript/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -315,7 +400,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020 John Doe
+    		&copy; 2020 Andrea Dione
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -396,6 +481,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
