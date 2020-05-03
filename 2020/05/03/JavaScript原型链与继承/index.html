@@ -6,15 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020/5 | Lee Blog</title>
+  <title>JavaScript原型链与继承 | Lee Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Lee Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2020/05/index.html">
+  <meta name="description" content="前言本文章是对我自己学习JavaScript中关于原型链和继承这部分知识的总结，当中也会进行额外的知识扩展。本文章是比较适合JavaScript入门的同学的，如果你不想看红皮书，那么可以尝试阅读一下本文，我会用简单的方式解说JavaScript的原型链和继承。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript原型链与继承">
+<meta property="og:url" content="http://yoursite.com/2020/05/03/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE%E4%B8%8E%E7%BB%A7%E6%89%BF/index.html">
 <meta property="og:site_name" content="Lee Blog">
+<meta property="og:description" content="前言本文章是对我自己学习JavaScript中关于原型链和继承这部分知识的总结，当中也会进行额外的知识扩展。本文章是比较适合JavaScript入门的同学的，如果你不想看红皮书，那么可以尝试阅读一下本文，我会用简单的方式解说JavaScript的原型链和继承。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/05/03/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE%E4%B8%8E%E7%BB%A7%E6%89%BF/proto.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/03/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE%E4%B8%8E%E7%BB%A7%E6%89%BF/JavaScript_proto_all.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/03/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE%E4%B8%8E%E7%BB%A7%E6%89%BF/proto_overwrite.png">
+<meta property="article:published_time" content="2020-05-03T11:37:06.000Z">
+<meta property="article:modified_time" content="2020-05-03T14:43:01.317Z">
 <meta property="article:author" content="Andrea Dione">
+<meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/05/03/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE%E4%B8%8E%E7%BB%A7%E6%89%BF/proto.png">
   
     <link rel="alternative" href="/atom.xml" title="Lee Blog" type="application/atom+xml">
   
@@ -162,36 +171,134 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-JavaScript原型链与继承" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      JavaScript原型链与继承
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/03/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE%E4%B8%8E%E7%BB%A7%E6%89%BF/" class="archive-article-date">
+
+        
+        <a href="/2020/05/03/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE%E4%B8%8E%E7%BB%A7%E6%89%BF/" class="archive-article-date">
   	<time datetime="2020-05-03T11:37:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-03</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/03/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE%E4%B8%8E%E7%BB%A7%E6%89%BF/">JavaScript原型链与继承</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文章是对我自己学习JavaScript中关于原型链和继承这部分知识的总结，当中也会进行额外的知识扩展。本文章是比较适合JavaScript入门的同学的，如果你不想看红皮书，那么可以尝试阅读一下本文，我会用简单的方式解说JavaScript的原型链和继承。</p>
+<a id="more"></a>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><p>理解原型链首先理解原型，JavaScript对象的产生是通过<strong>原型委托</strong>的方法实现的，你也可以简单理解为<strong>克隆</strong>。那么被克隆的这个对象就称之为<strong>原型对象</strong>，也称<strong>原型</strong>。</p>
+<p>要产生一个对象，就要有<strong>对象构造器</strong>。在JavaScript里面一个函数被关键字<strong>new</strong>调用就会变成一个构造器，在没有指定返回的对象的时候，构造器默认会返回this指向的对象。</p>
+<blockquote>
+<p>在没有显式指定return对象的情况下，如果在构造器里面定义了一些this属性，那么返回的对象就包含这些属性，如果没有，那么就会返回空对象{}。<em>注意：这里面的属性也包括方法。</em></p>
+</blockquote>
+<p>那么到这里我相信你已经知道并且能够区分：对象实例、原型和构造器了。接下来我们来看三个属性，这三个属性会把前面三者的关系串起来：</p>
+<table>
+    <tr>
+        <th>属性</th>
+        <th>描述</th>
+    </tr>
+    <tr>
+        <td>__proto__</td>
+        <td>这是对象的属性，指向这个对象的原型。</td>
+    </tr>
+    <tr>
+        <td>prototype</td>
+        <td>这是构造器的属性，指向构造对象的原型。</td>
+    </tr>
+    <tr>
+        <td>constructor</td>
+        <td>这是对象的属性，指向自身构造器。</td>
+    </tr>
+</table>
+假设有一个A类和它的实例a，那么它们有以下关系。
 
-        <div class="article-info info-on-right">
-          
+<img src="/2020/05/03/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE%E4%B8%8E%E7%BB%A7%E6%89%BF/proto.png" class title="原型关系">
+
+<blockquote>
+<p>有必要澄清一下：JavaScript并没有类的说法，本文只是为了更加简单去理解就用类去说明。但是在实际开发中，按照开发者的思维还是有必要去表现出类的个东西，在ES6当中也有相应的class关键字去表示类，但是这个只是一个语法糖，本质上JavaScript还是没有提供传统面向对象语言中的类式操作。</p>
+</blockquote>
+<p>上面只是一个非常简单的例子去描述一下 <strong>__proto__</strong>、<strong>prototype</strong>和<strong>constructor</strong>三者关系而已，实际上在JavaScript环境中，所有对象的原型关系如下图所示：</p>
+<img src="/2020/05/03/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE%E4%B8%8E%E7%BB%A7%E6%89%BF/JavaScript_proto_all.png" class title="JavaScript中的原型链关系">
+
+<p>从图中我们可以看出：JavaScript的所有对象都是通过Object克隆出来的，也就是说<strong>Object.prototype是JavaScript一切的根对象</strong>。</p>
+<p>另外我们还需要知道，任何函数（构造器是函数的子集）的原型都是<strong>Function.prototype</strong>，而函数原型<strong>Function.prototype</strong>的原型对象就是<strong>Object.prototype</strong>。</p>
+<p>到这里你可能已经懵了，那么你就从头再看一遍，或者两遍，或者。。。</p>
+<h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><p>看到这里，你已经对原型和前文中的三个属性以及它们的关系有所理解了，那么所谓的原型链就是通过 <strong>__proto__</strong>联系起来的。</p>
+<p>下面我们通过一个简单的JavaScript代码来理解一下原型链。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>) </span>&#123;&#125; <span class="comment">//首先先定义一个A类</span></span><br><span class="line"><span class="keyword">const</span> a = <span class="keyword">new</span> A() <span class="comment">//创建一个A类实例a</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params"></span>) </span>&#123;&#125; <span class="comment">//再定义一个B类</span></span><br><span class="line">B.prototype = a <span class="comment">//让B类的原型指向a实例</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> b = <span class="keyword">new</span> B() <span class="comment">//创建一个B类实例b</span></span><br></pre></td></tr></table></figure>
+<p>那么在上面的代码中，从b实例为开始节点，这条原型链就是<strong>b -&gt; a -&gt; A.prototype -&gt; A{} -&gt; Object.prototype</strong>。</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p><strong>要从某个JavaScript对象中找到某个属性，那么这个查找顺序就是沿着原型链一直向上寻找，直到找到那个属性就会停止并且返回该属性值；如果找不到就返回undefined。</strong></p>
+<p>原型链就是实现JavaScript对象继承的基础。如果你还没有理解原型链，那么请你回看上文。</p>
+<p>现在我们来改造上面的代码，然后去理解JavaScript继承方式，并且总结出JavaScript继承的优缺点。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'A'</span></span><br><span class="line">    <span class="keyword">this</span>.type = <span class="string">'bar'</span></span><br><span class="line">&#125; <span class="comment">//首先先定义一个A类</span></span><br><span class="line"><span class="keyword">const</span> a = <span class="keyword">new</span> A() <span class="comment">//创建一个A类实例a</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'B'</span></span><br><span class="line">&#125; <span class="comment">//再定义一个B类</span></span><br><span class="line">B.prototype = a <span class="comment">//让B类的原型指向a实例</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> b = <span class="keyword">new</span> B() <span class="comment">//创建一个B类实例b</span></span><br><span class="line"><span class="built_in">console</span>.log(b.name)</span><br><span class="line"><span class="built_in">console</span>.log(b.type)</span><br><span class="line"><span class="built_in">console</span>.log(b.age)</span><br></pre></td></tr></table></figure>
+<p>你可以动手写一下代码，看看console.log分别输出什么。</p>
+<p>答案分别是：B, bar, undefined。</p>
+<p>接下来继续改造代码，这时候我们再创建一个B实例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'A'</span></span><br><span class="line">    <span class="keyword">this</span>.type = <span class="string">'bar'</span></span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">const</span> a = <span class="keyword">new</span> A() </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'B'</span></span><br><span class="line">&#125; </span><br><span class="line">B.prototype = a </span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> b = <span class="keyword">new</span> B() </span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> b1 = <span class="keyword">new</span> B() <span class="comment">//新增一个b1实例</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(b.type)</span><br><span class="line"><span class="built_in">console</span>.log(b1.type)</span><br></pre></td></tr></table></figure>
+<p>这时候答案很简单，两个console.log的结果都是一样的，输出结果为bar。</p>
+<p>下面我们做一些变动，我们直接改变一下b1.type</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b1.type = <span class="string">'cur'</span></span><br></pre></td></tr></table></figure>
+<p>然后再输出一下b.type和b1.type，对比一下结果可以发现，b.type还是bar，而b1.type变成了cur。原因是b1在自身上面添加了一个type属性，这个type属性会“覆盖”原型上的type属性。</p>
+<p>到这里我们发现了JavaScript原型继承的一个优点——共用属性，减少了代码量，而且实例可以覆盖原型属性而不影响原型。</p>
+<p>接下来我们换另外一种改动：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'A'</span></span><br><span class="line">    <span class="keyword">this</span>.type = <span class="string">'bar'</span></span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">const</span> a = <span class="keyword">new</span> A() </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'B'</span></span><br><span class="line">&#125; </span><br><span class="line">B.prototype = a </span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> b = <span class="keyword">new</span> B() </span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> b1 = <span class="keyword">new</span> B()</span><br><span class="line">b1.__proto__.type = <span class="string">'cur'</span> <span class="comment">// 新改动</span></span><br><span class="line"><span class="built_in">console</span>.log(b.type)</span><br><span class="line"><span class="built_in">console</span>.log(b1.type)</span><br></pre></td></tr></table></figure>
+<p>输出结果我们可以发现，两者都变成了cur。也就是说b1的改动影响了b。原因是b1直接修改了原型的属性，从而影响到了所有子类。这是JavaScript原型继承的一个缺点，一旦有实例不小心改动了原型的属性，那么所有的实例都会受到影响。</p>
+<p>其实要解决这种缺点也是可以的，我们可以通过“间接继承”的方法解决问题。</p>
+<blockquote>
+<p>间接继承：实际上这个词实我凭空造出来的，这种方法并没有真正继承，而是在子类构造器里面运行父类构造器方法（<em>注意：这里其实并不能说是父类构造器，因为没有用new调用</em>），使得每一个子实例都有独立的父类属性集。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'A'</span></span><br><span class="line">    <span class="keyword">this</span>.type = <span class="string">'bar'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> a = <span class="keyword">new</span> A() </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    A.call(<span class="keyword">this</span>) <span class="comment">//执行A(),通过call把this指定为B类实例</span></span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'B'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> b = <span class="keyword">new</span> B() </span><br><span class="line"><span class="keyword">const</span> b1 = <span class="keyword">new</span> B()</span><br><span class="line"></span><br><span class="line">b1.type = <span class="string">'cur'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(b.type)</span><br><span class="line"><span class="built_in">console</span>.log(b1.type)</span><br></pre></td></tr></table></figure>
+<p>我们从输出结果可以看出来，无论b1.type怎么改也是不会影响到其他实例。这不是跟原型继承的效果一模一样吗？是的，只要原型继承不改变原型属性，那么这种“间接继承”的实现效果真的跟原型继承一模一样，而且“间接继承”消耗的空间多很多（因为每个实例都要拷贝一份父类属性集）。但是如果你仔细观察代码的话，你可以发现“间接继承”根本就没有继承，也就是说a实例根本就不是B类的原型对象，所以根本就没有原型继承的缺点。</p>
+<p>JavaScript实现继承的方法不仅仅这两种，但是每一种方法都没有做到十全十美，我们只能根据业务场景去决定用哪一种继承方式达到最优效果。</p>
+<h2 id="原型模型改写"><a href="#原型模型改写" class="headerlink" title="原型模型改写"></a>原型模型改写</h2><p>这是本文中的最后一个章节，实际上阅读到这里，你可能或多或少对JavaScript的原型链有了一定程度的理解了。</p>
+<p>我们还是用上面的代码来改造一下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'A'</span></span><br><span class="line">    <span class="keyword">this</span>.type = <span class="string">'bar'</span></span><br><span class="line">&#125; <span class="comment">//首先先定义一个A类</span></span><br><span class="line"><span class="keyword">const</span> a = <span class="keyword">new</span> A() <span class="comment">//创建一个A类实例a</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'B'</span></span><br><span class="line">&#125; <span class="comment">//再定义一个B类</span></span><br><span class="line">B.prototype = a <span class="comment">//让B类的原型指向a实例</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> b = <span class="keyword">new</span> B() <span class="comment">//创建一个B类实例b</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(b.type) <span class="comment">/* 这里输出bar */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">C</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'C'</span></span><br><span class="line">    <span class="keyword">this</span>.type = <span class="string">'cur'</span></span><br><span class="line">&#125;</span><br><span class="line">B.prototype = <span class="keyword">new</span> C() <span class="comment">//这里面修改了B类的原型</span></span><br><span class="line"><span class="keyword">const</span> b1 = <span class="keyword">new</span> B() <span class="comment">//然后创建一个B类实例b1</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(b.type)</span><br><span class="line"><span class="built_in">console</span>.log(b1.type)</span><br></pre></td></tr></table></figure>
+<p>本代码中，在创建了b实例后我们修改了B类的原型。现在尝试阅读代码，并且猜猜最后两个console.log输出什么？</p>
+<p>答案都是cur！那么你可能看懂了我写的文章，但是很遗憾，答案是错的。</p>
+<p>正确答案是bar,cur。</p>
+<p>现在我开始解释最后一个问题————<strong>原型重写</strong>。</p>
+<p>构造器的<strong>prototype</strong>并不会改变已经创建实例的原型，它只会影响接下来要创建的实例的原型。如果我们要修改已经创建的实例的原型的话，那么就要修改 <strong>__proto__</strong> 属性。</p>
+<img src="/2020/05/03/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE%E4%B8%8E%E7%BB%A7%E6%89%BF/proto_overwrite.png" class title="原型对象重写">
+
+<p>从上图中可以看出，B类的原型虽然改变了，但是并不会影响到实例b，因为实例的原型链是通过 <strong>__proto__</strong>联系起来的，而不是构造器的<strong>prototype</strong>。</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>到这里本章要讲解的只是都讲完了，虽然说本章是适合JavaScript入门的同学理解，但是要理解起来的还是有一点点难度的。即使你不愿意看红皮书（《JavaScript高级语言程序设计》），那也由不得你，要想深入入门一门语言，最基础的部分还是要耐心去看，去学。</p>
+<p>本章重点讲解JavaScript原型链，原型链是实现继承的基础，但是基于原型链的实现方法是有缺陷的，我们可以根据JavaScript语言特性，组合出一些比较好的继承方式，应用在合适的场景。同时本章也是《面向对象的JavaScript》一文中的一些补充，可以结合着一起看，相信会有更多的收获。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -203,7 +310,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -216,66 +323,104 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/03/JavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE%E4%B8%8E%E7%BB%A7%E6%89%BF/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/02/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84JavaScript/" class="archive-article-date">
-  	<time datetime="2020-05-02T15:46:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-02</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/02/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84JavaScript/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">面向对象的JavaScript</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/02/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84JavaScript/">面向对象的JavaScript</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/JavaScript//" class="article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -298,8 +443,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
