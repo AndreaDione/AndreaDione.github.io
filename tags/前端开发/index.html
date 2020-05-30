@@ -6,19 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>this应该指向谁？ | Lee Blog</title>
+  <title>Tag: 前端开发 | Lee Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言快人快语！这篇文章用最简短精炼的语言讲解JavaScript中的this问题。如果你想避开this的坑，那么就来吧！">
-<meta property="og:type" content="article">
-<meta property="og:title" content="this应该指向谁？">
-<meta property="og:url" content="http://yoursite.com/2020/05/06/this%E5%BA%94%E8%AF%A5%E6%8C%87%E5%90%91%E8%B0%81%EF%BC%9F/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Lee Blog">
+<meta property="og:url" content="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/index.html">
 <meta property="og:site_name" content="Lee Blog">
-<meta property="og:description" content="前言快人快语！这篇文章用最简短精炼的语言讲解JavaScript中的this问题。如果你想避开this的坑，那么就来吧！">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-05-06T11:08:35.000Z">
-<meta property="article:modified_time" content="2020-05-06T12:54:23.587Z">
 <meta property="article:author" content="Andrea Dione">
-<meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Lee Blog" type="application/atom+xml">
@@ -159,260 +154,75 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-this应该指向谁？" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      this应该指向谁？
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/05/30/%E7%95%8C%E9%9D%A2%E5%B8%83%E5%B1%80%E5%B0%8FTips/" class="archive-article-date">
+  	<time datetime="2020-05-30T14:30:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-30</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/05/30/%E7%95%8C%E9%9D%A2%E5%B8%83%E5%B1%80%E5%B0%8FTips/">界面布局小Tips</a>
     </h1>
   
 
-        
-        <a href="/2020/05/06/this%E5%BA%94%E8%AF%A5%E6%8C%87%E5%90%91%E8%B0%81%EF%BC%9F/" class="archive-article-date">
-  	<time datetime="2020-05-06T11:08:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>快人快语！这篇文章用最简短精炼的语言讲解JavaScript中的this问题。如果你想避开this的坑，那么就来吧！</p>
-<a id="more"></a>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="this的指向问题"><a href="#this的指向问题" class="headerlink" title="this的指向问题"></a>this的指向问题</h2><p><strong>JavaScript中的函数里面this的指向对象是基于函数的执行环境动态绑定的。</strong></p>
-<p>在这里面需要区分两种情况去讨论：分别是<strong>function函数</strong>和<strong>箭头函数</strong>。</p>
-<h3 id="两者区别"><a href="#两者区别" class="headerlink" title="两者区别"></a>两者区别</h3><p>箭头函数在定义的时候会确定this的指向环境，这种指向关系无法通过其他途径改变。</p>
-<p>箭头函数不能够当作构造器，不存在原型，也没有arguments对象。</p>
-<p>箭头函数不能够使用yield命令，因此不能够用作genertor函数。</p>
-<h3 id="function函数中的this"><a href="#function函数中的this" class="headerlink" title="function函数中的this"></a>function函数中的this</h3><p>除去不常用的with语句块和eval函数的情况下，具体到实际应用时，this的指向可以大致分成以下4种：</p>
-<p><strong>（1）作为对象的方法调用</strong></p>
-<p><strong>（2）作为普通函数调用</strong></p>
-<p><strong>（3）构造器使用</strong></p>
-<p><strong>（4）function.prototype.call和function.prototype.apply调用</strong></p>
-<h4 id="（1）作为对象的方法调用"><a href="#（1）作为对象的方法调用" class="headerlink" title="（1）作为对象的方法调用"></a>（1）作为对象的方法调用</h4><p>当函数作为对象的方法被调用的时候，this指向该对象：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">1</span>,</span><br><span class="line">    getA: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span> === obj)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.getA() <span class="comment">//true 1</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="（2）作为普通函数调用"><a href="#（2）作为普通函数调用" class="headerlink" title="（2）作为普通函数调用"></a>（2）作为普通函数调用</h4><p>当函数不作为对象的属性被调用的时候，而就是我们常说的普通函数方式，此时this总是指向全局变量。在浏览器的JavaScript里面，这个全局对象就是window,在Node里面是{}。（但是在严格模式下函数中的this是不能够指向全局的，所以是undefined）。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">'global'</span> <span class="comment">//注意这里没用var声明。不明白的话请区分一下全局变量和属性</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(getName()) <span class="comment">// global</span></span><br></pre></td></tr></table></figure>
-<p>又或者，JavaScript有个神奇的现象：<strong>this会“丢失”</strong>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">'global'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'obj'</span>,</span><br><span class="line">    getName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> getName = obj.getName</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj.getName()) <span class="comment">//obj</span></span><br><span class="line"><span class="built_in">console</span>.log(getName()) <span class="comment">// global</span></span><br></pre></td></tr></table></figure>
-<p>执行上面代码之后你会发现，getName中的this变成了全局。这种现象只能更加说明<strong>JavaScript中的函数里面this的指向对象是基于函数的执行环境动态绑定的</strong>。因为即使getName是跟obj.getName指向同一个函数，但是getName在运行的时候是作为普通函数调用的，所以会指向全局变量。（正常来讲普通函数也是有被对象调用的，只不过这个对象是全局对象。但是如果在严格模式的情况下this不能指向全局对象，会发生报错，所以这里还是说这种调动情况是作为普通函数调用。）</p>
-<p>在有些时候，如果在对象的方法里面定义了一个局部的callback函数，callback被作为普通函数被调用时，内部的this还是会指向全局。我相信这里很多人会踩过坑，包括一些工作过好几年的前端工程师。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">'global'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'obj'</span>,</span><br><span class="line">    getName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name) <span class="comment">//obj</span></span><br><span class="line">        <span class="keyword">var</span> callback = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'callback '</span> + <span class="keyword">this</span>.name)</span><br><span class="line">        &#125;</span><br><span class="line">        callback() <span class="comment">// global</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.getName()</span><br></pre></td></tr></table></figure>
-<h4 id="（3）构造器使用"><a href="#（3）构造器使用" class="headerlink" title="（3）构造器使用"></a>（3）构造器使用</h4><p>JavaScript中没有类，但是可以从构造器中创建对象，同时也提供了new的使用，使得构造器更加像是一个类。当使用new运算符调用函数的时候，该函数就会返回一个对象，通常情况下，构造器里面的this就是指向返回的这个对象。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">this</span>.name = <span class="string">'myObj'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> MyClass()</span><br><span class="line"><span class="built_in">console</span>.log(obj.name) <span class="comment">// myObj</span></span><br></pre></td></tr></table></figure>
-<p>但是使用new调用构造器的时候，还需要注意一个问题，<strong>如果构造器显式地返回了一个object类型的对象，那么此次运算结果最终会返回这个对象，而不是我们期待的this</strong>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> MyClass = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'myObj'</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        name: <span class="string">'obj'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> MyClass()</span><br><span class="line"><span class="built_in">console</span>.log(obj.name) <span class="comment">// obj</span></span><br></pre></td></tr></table></figure>
-<p>如果构造器不是显式地返回任何数据，或者是返回一个非对象类型的数据，就不会出现以上问题。</p>
-<h4 id="（4）function-prototype-call和function-prototype-apply调用"><a href="#（4）function-prototype-call和function-prototype-apply调用" class="headerlink" title="（4）function.prototype.call和function.prototype.apply调用"></a>（4）function.prototype.call和function.prototype.apply调用</h4><p>跟普通函数相比，通过上面的两种方法调用可以动态地改变传入函数的this。这两者几乎没区别，只是传入的参数格式不同而已。两者的第一个参数代表需要指定的执行对象；call的后续参数以单个单个的形式传入，apply的后续参数以数组的方式传入。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = &#123;</span><br><span class="line">    name: <span class="string">'obj1'</span>,</span><br><span class="line">    getName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj2 = &#123;</span><br><span class="line">    name: <span class="string">'obj2'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj1.getName()) <span class="comment">//obj1</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1.getName.call(obj2)) <span class="comment">// obj2</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="箭头函数中的this"><a href="#箭头函数中的this" class="headerlink" title="箭头函数中的this"></a>箭头函数中的this</h3><p>箭头函数是ES6中的一个新特性，这里面用箭头函数跟传统的函数就this的指向方面进行一个简单的比较。</p>
-<p>官方解析：<strong>箭头函数中的this的指向的是定义时候的this，而不是执行时候的this。</strong>其实这种说法并不是很准确，还有可能会误导同学们。</p>
-<p>我来做一个简单的理解：<strong>箭头函数因为没有自己的this，它只能依赖最近一级的this的指向，因此这样并不能说成箭头函数中的this的指向的是定义时候的this。</strong></p>
-<p>来看一个简单的对比：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'obj'</span></span><br><span class="line">    show: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">        &#125;, <span class="number">1000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.show() <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
-<p>上述代码输出undefined的原因是当代码执行到setTimeout的时候，此时匿名函数function相当于是普通函数被调用，所以它里面的this指向的是全局对象，而在全局里面并没有name的属性，因此是undefined。</p>
-<p>如果使用箭头函数来实现的话，那么将会得到一个不同的结果：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'obj'</span></span><br><span class="line">    show: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">        &#125;, <span class="number">1000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.show() <span class="comment">//obj</span></span><br></pre></td></tr></table></figure>
-<p>原因是当定义obj的show()方法的时候，在箭头函数编写this.name，此时的this是指的obj，所以this.name指的是obj.name。</p>
-<p>总结一下箭头函数的this指向问题：</p>
-<p><strong>（1）箭头函数的this绑定看的是this所在的函数定义在哪个对象之下，绑定到哪个对象则this就指向哪个对象。</strong></p>
-<p><strong>（2）如果出现对象嵌套的情况，则this绑定到最近的一层对象上。</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'obj'</span></span><br><span class="line">    fn: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">        <span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">            setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        f()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.fn() <span class="comment">//obj undefined undefined</span></span><br></pre></td></tr></table></figure>
-<p>第一个可以输出obj name是因为fn被obj调用了，而第二个输出undefined是因为f没有被任何对象调用，相当于普通函数（也可以说是window对象调用了f）。<strong>而第三个输出undefined的原因是箭头函数的this取决于f中的this。</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'obj'</span>,</span><br><span class="line">    fn: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fn = obj.fn</span><br><span class="line">fn() <span class="comment">//undefined undefined</span></span><br></pre></td></tr></table></figure>
-<p>上面代码输出两个undefined，没毛病。因为同样道理，箭头函数里的this取决于fn中的this，但是fn是被全局调用的，所以箭头函数里面的this也是指向全局。</p>
-<p>再来看两段代码，试着阅读代码写出输出情况，然后再验证代码，看看你是否已经完全掌握了this的指向了。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//题目一</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'obj'</span>,</span><br><span class="line">    fn: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">        <span class="keyword">var</span> f = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">            setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        f()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.fn() <span class="comment">//答案后文中揭晓</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//题目二</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'obj'</span>,</span><br><span class="line">    fn: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">        <span class="keyword">var</span> f = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">            setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        f()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.fn() <span class="comment">//答案后文中揭晓</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="call和apply"><a href="#call和apply" class="headerlink" title="call和apply"></a>call和apply</h2><p>call和apply的作用是一模一样的，它们的区别仅在于传入的参数形式不同而已。</p>
-<p>（一）apply接受两个参数，第一个参数指定了函数体内this对象的指向，第二个参数为一个带下标的集合，这个集合可以是数组，也可以是类数组（arguments）。apply方法把这个集合的元素作为参数传递给被调用的函数。</p>
-<p>（二）call传入的参的数量往往是不固定的，跟apply相同的是第一个参数都是this的指向，从第二个参数开始往后，每个参数被依次传入函数。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params">a,b,c</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a,b,c)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func.call(<span class="literal">null</span>, <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">func.apply(<span class="literal">null</span>, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">//结果都是输出1，2，3</span></span><br></pre></td></tr></table></figure>
-<p>当使用call或者apply的时候，如果我们传入的第一个参数为null，则函数体内的this会指向默认的宿主对象，在浏览器中是window（如果是严格模式的话，this是null）。</p>
-<p><em>后面有机会的话写一篇关于bind的文章，手动实现一个bind。</em></p>
-<h2 id="arguments"><a href="#arguments" class="headerlink" title="arguments"></a>arguments</h2><p>函数的参数列表arguments是一个类数组对象，虽然它也有“下标”，但是它并非是真正的数组，所以不能像数组一样进行排序操作或者往集合里面添加一个新的元素。这种情况下如果需要对arguments进行一个操作，那么可以借用Array.prototype对象上面的方法。比如往arguments中添加一个新的元素，通常会借用Array.prototype.push：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">Array</span>.prototype.push.call(<span class="built_in">arguments</span>, <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>)</span><br><span class="line">&#125;)(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="comment">//输出结果：[Arguments] &#123; '0': 1, '1': 2, '2': 1, '3': 2, '4': 3 &#125;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>突然发现写博客太累了，结语就不写了。希望本文章对还在被JavaScript中的this问题困扰的你有所帮助，避坑的办法是：多写代码多踩坑！</p>
-<p>现在公布答案：</p>
-<p>题目一：obj，obj，obj</p>
-<p>题目二：obj，obj，undefined</p>
-<p>做对了吗？</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/img/zhifubao.png">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/img/weixin.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">前端开发</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/JavaScript//" class="article-tag-list-link color1">JavaScript</a>
+        			<a href="/categories/软件开发//" class="article-tag-list-link color5">软件开发</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/06/this%E5%BA%94%E8%AF%A5%E6%8C%87%E5%90%91%E8%B0%81%EF%BC%9F/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2020/05/09/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          正则表达式
-        
-      </div>
-    </a>
   
   
-    <a href="/2020/05/05/JavaScript%E9%97%AD%E5%8C%85/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JavaScript闭包</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -435,9 +245,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
