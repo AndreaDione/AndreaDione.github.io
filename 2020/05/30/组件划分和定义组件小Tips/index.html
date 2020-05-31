@@ -6,15 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: WEB前端 优化方案 | Lee Blog</title>
+  <title>组件划分和定义组件小Tips | Lee Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Lee Blog">
-<meta property="og:url" content="http://yoursite.com/tags/WEB%E5%89%8D%E7%AB%AF-%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/index.html">
+  <meta name="description" content="前言页面复杂的情况下要善于划分组件，同时组件的大小由外部决定。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="组件划分和定义组件小Tips">
+<meta property="og:url" content="http://yoursite.com/2020/05/30/%E7%BB%84%E4%BB%B6%E5%88%92%E5%88%86%E5%92%8C%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E5%B0%8FTips/index.html">
 <meta property="og:site_name" content="Lee Blog">
+<meta property="og:description" content="前言页面复杂的情况下要善于划分组件，同时组件的大小由外部决定。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/05/30/%E7%BB%84%E4%BB%B6%E5%88%92%E5%88%86%E5%92%8C%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E5%B0%8FTips/homepage%E5%88%92%E5%88%86.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/30/%E7%BB%84%E4%BB%B6%E5%88%92%E5%88%86%E5%92%8C%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E5%B0%8FTips/pagesdir.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/05/30/%E7%BB%84%E4%BB%B6%E5%88%92%E5%88%86%E5%92%8C%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E5%B0%8FTips/compdir.jpg">
+<meta property="article:published_time" content="2020-05-30T14:30:30.000Z">
+<meta property="article:modified_time" content="2020-05-31T05:47:57.308Z">
 <meta property="article:author" content="Andrea Dione">
+<meta property="article:tag" content="前端开发">
+<meta property="article:tag" content="CSS">
+<meta property="article:tag" content="Component">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/05/30/%E7%BB%84%E4%BB%B6%E5%88%92%E5%88%86%E5%92%8C%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E5%B0%8FTips/homepage%E5%88%92%E5%88%86.png">
   
     <link rel="alternative" href="/atom.xml" title="Lee Blog" type="application/atom+xml">
   
@@ -154,48 +165,106 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-组件划分和定义组件小Tips" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/15/WEB%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2020-05-15T14:11:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/15/WEB%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">WEB前端性能优化</a>
+    <h1 class="article-title" itemprop="name">
+      组件划分和定义组件小Tips
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/05/30/%E7%BB%84%E4%BB%B6%E5%88%92%E5%88%86%E5%92%8C%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E5%B0%8FTips/" class="archive-article-date">
+  	<time datetime="2020-05-30T14:30:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>页面复杂的情况下要善于划分组件，同时组件的大小由外部决定。</p>
+<a id="more"></a>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>面对一个还算是比较复杂一点的首页是不应该在一个文件中完成所有代码的。于是我们要对页面进行组件划分，试着根据其他页面分离出公共的部分。那么公共的部分可以放到<code>components</code>目录下，如果是页面特有的部分那么就可以放到该页面目录下的<code>view</code>目录。例如我是这样划分组件的：</p>
+<img src="/2020/05/30/%E7%BB%84%E4%BB%B6%E5%88%92%E5%88%86%E5%92%8C%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E5%B0%8FTips/homepage%E5%88%92%E5%88%86.png" class>
+
+<p>根据我的项目要求，首页HomePage页面特有的是<strong>Header的内容</strong>，<strong>分类面板</strong>，<strong>通知面板</strong>，<strong>中奖面板</strong>，<strong>商品列表</strong>。于是这些都可以独立作为HomePage页面下的组件，我就放到了HomePage目录下。</p>
+<img src="/2020/05/30/%E7%BB%84%E4%BB%B6%E5%88%92%E5%88%86%E5%92%8C%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E5%B0%8FTips/pagesdir.jpg" class>
+
+<blockquote>
+<p>正常来讲一个组件导出的最标准的写法是导出index.js，但是这里到处index.jsx的原因是我比较懒。</p>
+</blockquote>
+<p>那么剩下的<strong>TabBar</strong>部分就是公共组件了，另外我也额外强调一下：<strong>其实Header也是公用组件</strong>，但是只是每个页面的显示会不同，所以这里面就可以用到<strong>高阶组件</strong>的方法来优雅地解决问题。</p>
+<img src="/2020/05/30/%E7%BB%84%E4%BB%B6%E5%88%92%E5%88%86%E5%92%8C%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E5%B0%8FTips/compdir.jpg" class>
+
+<h2 id="组件的大小应该由外部决定"><a href="#组件的大小应该由外部决定" class="headerlink" title="组件的大小应该由外部决定"></a>组件的大小应该由外部决定</h2><p>比如说<strong>分类面板</strong>这页面组件，导出的就是一个class为classification-panel的div。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassificationPanel</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">const</span> list = <span class="keyword">this</span>.props.list || []</span><br><span class="line">        <span class="keyword">if</span>(!(list <span class="keyword">instanceof</span> <span class="built_in">Array</span>)) &#123;</span><br><span class="line">            <span class="built_in">console</span>.error(<span class="string">`Type Error! <span class="subst">$&#123;list&#125;</span> is not an Array`</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div className=<span class="string">"classification-panel"</span>&gt;</span><br><span class="line">                &lt;div className=<span class="string">"classification-content-table"</span>&gt;</span><br><span class="line">                    &#123;list.map(<span class="function">(<span class="params">item, index</span>) =&gt;</span> (</span><br><span class="line">                        &lt;ClassificationTab item=&#123;item&#125; key=&#123;index&#125;/&gt;</span><br><span class="line">                    ))&#125;</span><br><span class="line">                &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>那么这个classification-panel的css就定义<strong>宽高属性100%</strong>。</p>
+<p>在HomePage中调用的时候就用一个盒子包住ClassificationPanel，然后定义外层盒子的宽高，从而间接决定ClassificationPanel的宽高。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div className=<span class="string">"classsfication-panel"</span>&gt;</span><br><span class="line">    &lt;ClassificationPanel list=&#123;classificationTabs&#125;/&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>别问为什么要多封装一层，这样有利于组件复用，而且CSS调整起来十分方便。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">WEB前端 优化方案</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">前端开发</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Component</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -208,17 +277,104 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/30/%E7%BB%84%E4%BB%B6%E5%88%92%E5%88%86%E5%92%8C%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E5%B0%8FTips/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/05/20/TypeScript%E2%80%94%E2%80%94%E6%8E%A5%E5%8F%A3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">TypeScript——接口</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -241,9 +397,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
@@ -311,15 +467,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">WEB前端 优化方案</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TypeScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">WEB前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">优化方案</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">前端开发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Component</a>
               </li>
             
             <div class="clearfix"></div>
